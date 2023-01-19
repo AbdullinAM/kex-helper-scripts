@@ -23,6 +23,10 @@ coverage_file = "coverage.json"
 if len(sys.argv) > 3:
     coverage_file = sys.argv[3]
 
+delete_coverage = False
+if len(sys.argv) > 4:
+    delete_coverage = bool(sys.argv[4])
+
 
 def execute_benchmark(project_name: str, klass_name: str, mode_name: str, output_directory: str):
     classpath = ""
@@ -47,7 +51,7 @@ def execute_benchmark(project_name: str, klass_name: str, mode_name: str, output
     )
 
 
-if os.path.exists(coverage_file):
+if delete_coverage and os.path.exists(coverage_file):
     os.remove(coverage_file)
 
 for (index, benchmark) in enumerate(BENCHMARK_CLASSES):
