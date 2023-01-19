@@ -50,5 +50,6 @@ print()
 print("Average line coverage: {:.2f}".format(lines / len(BENCHMARK_CLASSES)))
 print("Average branch coverage: {:.2f}".format(branches / len(BENCHMARK_CLASSES)))
 print("Average instruction coverage: {:.2f}".format(instructions / len(BENCHMARK_CLASSES)))
-print("Uncovered classes:")
-print("\n".join(uncovered_classes))
+if len(uncovered_classes) != 0:
+    print("Uncovered classes:")
+    print("\n".join(uncovered_classes))
