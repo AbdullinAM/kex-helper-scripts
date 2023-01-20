@@ -44,7 +44,8 @@ def execute_benchmark(project_name: str, klass_name: str, mode_name: str, output
             "--classpath", classpath,
             "--target", klass_name,
             "--mode", mode_name,
-            "--output", output_directory
+            "--output", output_directory,
+            "--option", "kex:coverage:{}".format(coverage_file)
         ],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL
