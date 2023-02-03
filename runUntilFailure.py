@@ -14,6 +14,7 @@ from juge10 import spoon_classpath
 
 juge_path = sys.argv[1]
 
+startIndex = 0
 mode = "concolic"
 
 if len(sys.argv) > 2:
@@ -52,7 +53,7 @@ def test_benchmark(project_name: str, klass_name: str, mode_name: str, output_di
     )
     stdout, stderr = process.communicate()
     stderrStr = stderr.decode()
-    if not stderrStr:
+    if process.returncode == 0:
         return True
     else:
         print(stderrStr)
@@ -63,6 +64,8 @@ if delete_coverage and os.path.exists(coverage_file):
     os.remove(coverage_file)
 
 for (index, benchmark) in enumerate(BENCHMARK_CLASSES):
+    if index < startIndex:
+        continue
     (project, klass) = benchmark
     output_dir = os.path.join("temp/", project.lower())
     if os.path.exists(output_dir):
