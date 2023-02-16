@@ -37,6 +37,4 @@ for name in crashes:
     description = crashes[name]
     class_path = get_class_path(jcrashpack_path, description["application"], description["version"])
     trace_file = get_trace(jcrashpack_path, description["application"], description["id"])
-    if not run_benchmark(class_path, trace_file, os.path.join("temp", name), default_depth):
-        break
-
+    run_benchmark(class_path, trace_file, os.path.join("temp", name), default_depth)
