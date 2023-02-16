@@ -16,11 +16,11 @@ trace_file = get_trace(jcrashpack_path, description["application"], description[
 
 print("""
 --classpath
-{}
+"{}"
 --mode
 crash
 --trace
-{}
+"{}"
 --depth
 {}
 --output

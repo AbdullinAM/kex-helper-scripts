@@ -13,8 +13,8 @@ def run_benchmark(class_path: str, trace_file: str, output_directory: str, depth
     process = subprocess.Popen(
         [
             "./kex.sh",
-            "--classpath", class_path,
-            "--trace", trace_file,
+            "--classpath", "\"{}\"".format(class_path),
+            "--trace", "\"{}\"".format(trace_file),
             "--mode", "crash",
             "--output", output_directory,
             "--depth", str(depth)
