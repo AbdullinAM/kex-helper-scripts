@@ -2,6 +2,33 @@
 import sys
 import subprocess
 from jcrashpack import *
+import signal
+import time
+from functools import partial
+
+
+globals = {"process" : None}
+def get_process():
+    return globals["process"]
+
+def set_process(value):
+    globals["process"] = value
+
+def sigint_handler(signum, frame):
+    current = get_process()
+    res = input("\nDo you want to kill the whole process or just current run? [whole/current]\n")
+    if res == "whole":
+        exit(1)
+    elif res == "current":
+        if current is None:
+            print("Error, there is no process that is currently running")
+        else:
+            current.terminate()
+            print("Successfully killed current process")
+    else:
+        print("Error, invalid input")
+
+signal.signal(signal.SIGINT, sigint_handler)
 
 excludes = {'ES-18109', 'ES-19414', 'ES-21665', 'ES-21911', 'ES-22077', 'ES-22997', 'ES-23115', 'ES-24047', 'ES-24485',
             'ES-24968', 'ES-25119', 'ES-25359', 'ES-25666', 'ES-25775', 'ES-25905', 'ES-26191', 'ES-26865', 'ES-26868',
@@ -17,7 +44,7 @@ if len(sys.argv) > 2:
     default_depth = int(sys.argv[2])
 
 def run_benchmark(class_path: str, trace_file: str, output_directory: str, depth: int) -> bool:
-    process = subprocess.Popen(
+    current = subprocess.Popen(
         [
             "./kex.sh",
             "--classpath", "\"{}\"".format(class_path),
@@ -29,9 +56,11 @@ def run_benchmark(class_path: str, trace_file: str, output_directory: str, depth
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE
     )
-    stdout, stderr = process.communicate()
+    set_process(current)
+    stdout, stderr = current.communicate()
     stderr_str = stderr.decode()
-    if process.returncode == 0:
+    return_code = current.returncode
+    if return_code == 0:
         return True
     else:
         print(stderr_str)
