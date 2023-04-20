@@ -2,8 +2,9 @@ import sys
 
 from jcrashpack import *
 
-jcrashpack_path = sys.argv[1]
-benchmark = sys.argv[2]
+jcrashpack_path = '/home/abdullin/workspace/JCrashPack'# sys.argv[1]
+benchmark = 'LANG-12b' # sys.argv[2]
+depth = 10
 
 
 crashes = read_crashes(jcrashpack_path)
@@ -25,4 +26,4 @@ crash
 {}
 --output
 temp/{}
-""".format(class_path, trace_file, str(1), benchmark))
+""".format(class_path, trace_file, str(depth), benchmark))
