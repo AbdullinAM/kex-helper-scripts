@@ -3,8 +3,8 @@ import sys
 from jcrashpack import *
 
 jcrashpack_path = '/home/abdullin/workspace/JCrashPack'# sys.argv[1]
-benchmark = 'LANG-12b' # sys.argv[2]
-depth = 10
+benchmark = 'MATH-100b' # sys.argv[2]
+depth = 1
 
 
 crashes = read_crashes(jcrashpack_path)

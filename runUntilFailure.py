@@ -41,7 +41,7 @@ def test_benchmark(project_name: str, klass_name: str, mode_name: str, output_di
         classpath = spoon_classpath(juge_path)
     process = subprocess.Popen(
         [
-            "./kex.sh",
+            "./kex.py",
             "--classpath", classpath,
             "--target", klass_name,
             "--mode", mode_name,

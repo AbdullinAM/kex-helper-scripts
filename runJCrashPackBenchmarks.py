@@ -46,7 +46,7 @@ if len(sys.argv) > 2:
 def run_benchmark(class_path: str, trace_file: str, output_directory: str, depth: int) -> bool:
     current = subprocess.Popen(
         [
-            "./kex.sh",
+            "./kex.py",
             "--classpath", "\"{}\"".format(class_path),
             "--trace", "\"{}\"".format(trace_file),
             "--mode", "crash",
