@@ -5,7 +5,6 @@ from jcrashpack import *
 import signal
 import time
 
-
 globals = {"process" : None}
 def get_process():
     return globals["process"]
@@ -29,16 +28,7 @@ def sigint_handler(signum, frame):
 
 signal.signal(signal.SIGINT, sigint_handler)
 
-excludes = {'ES-14457', 'ES-18109', 'ES-19026', 'ES-19414', 'ES-20045', 'ES-21665', 'ES-21911', 'ES-22077', 
-            'ES-22156', 'ES-22373', 'ES-22500', 'ES-22997', 'ES-23115', 'ES-24047', 'ES-24485',
-            'ES-24968', 'ES-25119', 'ES-25359', 'ES-25666', 'ES-25775', 'ES-25905', 'ES-26191', 'ES-26865', 'ES-26868',
-            'ES-27788', 'ES-28141',  'ES-9379', 'LANG-13b', 'LANG-37b', 'MATH-8b',
-            'MOCKITO-17b', 'MOCKITO-21b', 'MOCKITO-23b', 'MOCKITO-4b', 'TIME-14b', 'TIME-18b', 'TIME-20b', 'TIME-2b',
-            'XRENDERING-481', 'XRENDERING-418', 'XWIKI-13137',
-            'XWIKI-13407', 'XWIKI-13617', 'XWIKI-13916', 'XWIKI-13942', 'XWIKI-14263', 'XWIKI-14599', 'XWIKI-14612', 'XWIKI-13031'
-            'ES-23675', 'XWIKI-13031'}
-
-jcrashpack_path = sys.argv[1]
+jcrashpack_path = "/home/abdullin/workspace/JCrashPack/" #sys.argv[1]
 
 default_depth = 0
 if len(sys.argv) > 2:
@@ -69,14 +59,13 @@ def run_benchmark(class_path: str, trace_file: str, output_directory: str, depth
 
 
 crashes = read_crashes(jcrashpack_path)
-print(len(crashes) - len(excludes))
+print(len(crashes))
+start = False
 for name in crashes:
-    if name in excludes:
-        continue
-    if 'ES' in name:
-        continue
-    if 'XWIKI' in name:
-        continue
+    # if name == 'LANG-20b':
+    #     start = True
+    # if not start:
+    #     continue
     print("Running on benchmark {}".format(name))
     description = crashes[name]
     class_path = get_class_path(jcrashpack_path, description["application"], description["version"])

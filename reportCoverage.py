@@ -47,9 +47,15 @@ for (project, klass) in BENCHMARK_CLASSES:
         uncovered_classes.append(klass)
 
 print()
-print("Average line coverage: {:.2f}".format(lines / len(BENCHMARK_CLASSES)))
-print("Average branch coverage: {:.2f}".format(branches / len(BENCHMARK_CLASSES)))
-print("Average instruction coverage: {:.2f}".format(instructions / len(BENCHMARK_CLASSES)))
+print("Average line coverage for all classes: {:.2f}".format(lines / len(BENCHMARK_CLASSES)))
+print("Average branch coverage for all classes: {:.2f}".format(branches / len(BENCHMARK_CLASSES)))
+print("Average instruction coverage for all classes: {:.2f}".format(instructions / len(BENCHMARK_CLASSES)))
 if len(uncovered_classes) != 0:
+    number_found = len(BENCHMARK_CLASSES) - len(uncovered_classes)
+    print()
+    print("Average line coverage for found classes: {:.2f}".format(lines / number_found))
+    print("Average branch coverage for found classes: {:.2f}".format(branches / number_found))
+    print("Average instruction coverage for found classes: {:.2f}".format(instructions / number_found))
+    print()
     print("Uncovered classes:")
     print("\n".join(uncovered_classes))

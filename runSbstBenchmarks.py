@@ -27,6 +27,12 @@ delete_coverage = False
 if len(sys.argv) > 4:
     delete_coverage = bool(sys.argv[4])
 
+start = True
+start_from = ""
+if len(sys.argv) > 5:
+    start = False
+    start_from = sys.argv[5]
+
 
 def execute_benchmark(project_name: str, klass_name: str, mode_name: str, output_directory: str):
     classpath = ""
@@ -40,6 +46,7 @@ def execute_benchmark(project_name: str, klass_name: str, mode_name: str, output
         classpath = spoon_classpath(juge_path)
     return subprocess.run(
         [
+            "python",
             "./kex.py",
             "--classpath", classpath,
             "--target", klass_name,
@@ -55,8 +62,15 @@ def execute_benchmark(project_name: str, klass_name: str, mode_name: str, output
 if delete_coverage and os.path.exists(coverage_file):
     os.remove(coverage_file)
 
+
 for (index, benchmark) in enumerate(BENCHMARK_CLASSES):
     (project, klass) = benchmark
+    if klass == start_from:
+        start = True
+
+    if not start:
+        continue
+
     output_dir = os.path.join("temp/", project.lower())
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
