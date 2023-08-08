@@ -22,7 +22,7 @@ coverageData = json.loads(open(coverage_file).read())
 
 start_time = 0
 end_time = 0
-time_step = 2
+time_step = 1
 
 klass_timelines = {}
 
@@ -59,13 +59,16 @@ plots = {coverage_type: [] for coverage_type in displayed_coverages}
 for iteration in range(start_time, end_time + time_step, time_step):
 	times.append(iteration)
 	for index, coverage_type in enumerate(displayed_coverages):
-		plots[coverage_type].append(averaged_timelines[iteration][index])
+		plots[coverage_type].append(averaged_timelines[iteration][index] * 100.0)
 
 for name, plot in plots.items():
 	plt.plot(times, plot, label = "{} coverage".format(name))
+
+# plt.plot([100 for _ in plot], plot, linestyle='dashed')
 
 plt.xlabel('time, s')
 plt.ylabel('coverage, %')
 plt.title('Averaged coverage saturation')
 plt.legend()
+plt.grid()
 plt.show()
