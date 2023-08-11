@@ -39,49 +39,49 @@ JSOUP=org.jsoup.nodes.DocumentType
 JSOUP=org.jsoup.internal.ConstrainableInputStream
 JSOUP=org.jsoup.select.NodeTraversor
 JSOUP=org.jsoup.nodes.TextNode
-SPATIAL4j=org.locationtech.spatial4j.distance.GeodesicSphereDistCalc
-SPATIAL4j=org.locationtech.spatial4j.io.WKTReader
-SPATIAL4j=org.locationtech.spatial4j.shape.impl.PointImpl
-SPATIAL4j=org.locationtech.spatial4j.shape.SpatialRelation
-SPATIAL4j=org.locationtech.spatial4j.shape.impl.InfBufLine
-SPATIAL4j=org.locationtech.spatial4j.context.SpatialContextFactory
-SPATIAL4j=org.locationtech.spatial4j.SpatialPredicate
-SPATIAL4j=org.locationtech.spatial4j.distance.DistanceUtils
-SPATIAL4j=org.locationtech.spatial4j.shape.impl.BufferedLineString
-SPATIAL4j=org.locationtech.spatial4j.io.GeoJSONWriter
-SPATIAL4j=org.locationtech.spatial4j.shape.impl.BufferedLine
-SPATIAL4j=org.locationtech.spatial4j.shape.impl.CircleImpl
-SPATIAL4j=org.locationtech.spatial4j.io.PolyshapeReader
-TA4j=org.ta4j.core.criteria.SqnCriterion
-TA4j=org.ta4j.core.indicators.KAMAIndicator
-TA4j=org.ta4j.core.aggregator.DurationBarAggregator
-TA4j=org.ta4j.core.criteria.pnl.NetLossCriterion
-TA4j=org.ta4j.core.criteria.helpers.StandardErrorCriterion
-TA4j=org.ta4j.core.rules.StopGainRule
-TA4j=org.ta4j.core.criteria.pnl.AverageProfitCriterion
-TA4j=org.ta4j.core.utils.BarSeriesUtils
-TA4j=org.ta4j.core.rules.StopLossRule
-TA4j=org.ta4j.core.indicators.helpers.LossIndicator
-TA4j=org.ta4j.core.indicators.LWMAIndicator
-TA4j=org.ta4j.core.criteria.NumberOfBreakEvenPositionsCriterion
-TA4j=org.ta4j.core.criteria.NumberOfLosingPositionsCriterion
-TA4j=org.ta4j.core.analysis.cost.LinearTransactionCostModel
-TA4j=org.ta4j.core.indicators.SMAIndicator
-TA4j=org.ta4j.core.indicators.aroon.AroonUpIndicator
-TA4j=org.ta4j.core.Trade
-TA4j=org.ta4j.core.indicators.statistics.PearsonCorrelationIndicator
-TA4j=org.ta4j.core.num.NaN
-TA4j=org.ta4j.core.indicators.MACDIndicator
-TA4j=org.ta4j.core.criteria.pnl.GrossProfitCriterion
-TA4j=org.ta4j.core.rules.TimeRangeRule
-TA4j=org.ta4j.core.indicators.aroon.AroonDownIndicator
-TA4j=org.ta4j.core.Position
-TA4j=org.ta4j.core.criteria.helpers.VarianceCriterion
-TA4j=org.ta4j.core.indicators.UlcerIndexIndicator
-TA4j=org.ta4j.core.indicators.statistics.VarianceIndicator
-TA4j=org.ta4j.core.criteria.NumberOfConsecutivePositionsCriterion
-TA4j=org.ta4j.core.indicators.statistics.SimpleLinearRegressionIndicator
-TA4j=org.ta4j.core.analysis.Returns
+SPATIAL4J=org.locationtech.spatial4j.distance.GeodesicSphereDistCalc
+SPATIAL4J=org.locationtech.spatial4j.io.WKTReader
+SPATIAL4J=org.locationtech.spatial4j.shape.impl.PointImpl
+SPATIAL4J=org.locationtech.spatial4j.shape.SpatialRelation
+SPATIAL4J=org.locationtech.spatial4j.shape.impl.InfBufLine
+SPATIAL4J=org.locationtech.spatial4j.context.SpatialContextFactory
+SPATIAL4J=org.locationtech.spatial4j.SpatialPredicate
+SPATIAL4J=org.locationtech.spatial4j.distance.DistanceUtils
+SPATIAL4J=org.locationtech.spatial4j.shape.impl.BufferedLineString
+SPATIAL4J=org.locationtech.spatial4j.io.GeoJSONWriter
+SPATIAL4J=org.locationtech.spatial4j.shape.impl.BufferedLine
+SPATIAL4J=org.locationtech.spatial4j.shape.impl.CircleImpl
+SPATIAL4J=org.locationtech.spatial4j.io.PolyshapeReader
+TA4J=org.ta4j.core.criteria.SqnCriterion
+TA4J=org.ta4j.core.indicators.KAMAIndicator
+TA4J=org.ta4j.core.aggregator.DurationBarAggregator
+TA4J=org.ta4j.core.criteria.pnl.NetLossCriterion
+TA4J=org.ta4j.core.criteria.helpers.StandardErrorCriterion
+TA4J=org.ta4j.core.rules.StopGainRule
+TA4J=org.ta4j.core.criteria.pnl.AverageProfitCriterion
+TA4J=org.ta4j.core.utils.BarSeriesUtils
+TA4J=org.ta4j.core.rules.StopLossRule
+TA4J=org.ta4j.core.indicators.helpers.LossIndicator
+TA4J=org.ta4j.core.indicators.LWMAIndicator
+TA4J=org.ta4j.core.criteria.NumberOfBreakEvenPositionsCriterion
+TA4J=org.ta4j.core.criteria.NumberOfLosingPositionsCriterion
+TA4J=org.ta4j.core.analysis.cost.LinearTransactionCostModel
+TA4J=org.ta4j.core.indicators.SMAIndicator
+TA4J=org.ta4j.core.indicators.aroon.AroonUpIndicator
+TA4J=org.ta4j.core.Trade
+TA4J=org.ta4j.core.indicators.statistics.PearsonCorrelationIndicator
+TA4J=org.ta4j.core.num.NaN
+TA4J=org.ta4j.core.indicators.MACDIndicator
+TA4J=org.ta4j.core.criteria.pnl.GrossProfitCriterion
+TA4J=org.ta4j.core.rules.TimeRangeRule
+TA4J=org.ta4j.core.indicators.aroon.AroonDownIndicator
+TA4J=org.ta4j.core.Position
+TA4J=org.ta4j.core.criteria.helpers.VarianceCriterion
+TA4J=org.ta4j.core.indicators.UlcerIndexIndicator
+TA4J=org.ta4j.core.indicators.statistics.VarianceIndicator
+TA4J=org.ta4j.core.criteria.NumberOfConsecutivePositionsCriterion
+TA4J=org.ta4j.core.indicators.statistics.SimpleLinearRegressionIndicator
+TA4J=org.ta4j.core.analysis.Returns
 THREETEN-EXTRA=org.threeten.extra.chrono.EthiopicEra
 THREETEN-EXTRA=org.threeten.extra.Minutes
 THREETEN-EXTRA=org.threeten.extra.scale.UtcInstant
@@ -138,7 +138,7 @@ infrastructure/benchmarks_11th/projects/commons-collections/target/dependency/gu
 def jsoup_classpath(base_path: str) -> str:
     return prepare_classpath(
         base_path,
-        """infrastructure/benchmarks_11th/projects/jsoup/target/jsoup-1.16.2-SNAPSHOT.jar
+        """infrastructure/benchmarks_11th/projects/jsoup/target/classes
 infrastructure/benchmarks_11th/projects/jsoup/target/dependency/junit-jupiter-params-5.9.3.jar
 infrastructure/benchmarks_11th/projects/jsoup/target/dependency/gson-2.10.1.jar
 infrastructure/benchmarks_11th/projects/jsoup/target/dependency/jetty-util-ajax-9.4.51.v20230217.jar
@@ -201,7 +201,7 @@ infrastructure/benchmarks_11th/projects/threeten-extra/target/dependency/guava-3
 def ta4j_classpath(base_path: str) -> str:
     return prepare_classpath(
         base_path,
-        """infrastructure/benchmarks_11th/projects/ta4j/ta4j-core/target/ta4j-core-0.15-SNAPSHOT.jar
+        """infrastructure/benchmarks_11th/projects/ta4j/ta4j-core/target/ta4j-core-0.15.jar
 infrastructure/benchmarks_11th/projects/ta4j/ta4j-core/target/dependency/hamcrest-core-1.3.jar
 infrastructure/benchmarks_11th/projects/ta4j/ta4j-core/target/dependency/commons-io-2.11.0.jar
 infrastructure/benchmarks_11th/projects/ta4j/ta4j-core/target/dependency/logback-classic-1.2.3.jar

@@ -3,7 +3,7 @@
 import os
 import json
 
-JUGE_HOME = '/home/abdullin/workspace/JUGE/infrastructure/benchmarks_11th/'
+JUGE_HOME = 'JUGE/infrastructure/benchmarks_11th/'
 JUGE_DOCKER_HOME = '/var/benchmarks/'
 
 def print_benchmark(benchmark, benchmark_klass):
@@ -46,7 +46,7 @@ def print_benchmark(benchmark, benchmark_klass):
 	elif benchmark.startswith('ta4j'):
 		benchmark_src = JUGE_DOCKER_HOME + 'projects/ta4j/ta4j-core/src/main/java'
 		benchmark_bin = JUGE_DOCKER_HOME + 'projects/ta4j/ta4j-core/target/classes'
-		benchmark_classpath += JUGE_DOCKER_HOME + 'projects/ta4j/ta4j-core/target/ta4j-core-0.15-SNAPSHOT.jar'
+		benchmark_classpath += JUGE_DOCKER_HOME + 'projects/ta4j/ta4j-core/target/ta4j-core-0.15.jar'
 		dependency_path = JUGE_HOME + 'projects/ta4j/ta4j-core/target/dependency'
 		dependencies = [
 			(dependency_path + '/' + path).replace(JUGE_HOME, JUGE_DOCKER_HOME)

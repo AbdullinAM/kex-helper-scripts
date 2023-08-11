@@ -1,9 +1,9 @@
-#!/bin/python
+#!/bin/python3
 
 import sys
 import json
 
-from juge10 import BENCHMARK_CLASSES
+from juge11 import BENCHMARK_CLASSES
 
 coverage_file = "coverage.json"
 if len(sys.argv) > 1:

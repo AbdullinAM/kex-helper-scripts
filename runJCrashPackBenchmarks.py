@@ -28,7 +28,7 @@ def sigint_handler(signum, frame):
 
 signal.signal(signal.SIGINT, sigint_handler)
 
-jcrashpack_path = "/home/abdullin/workspace/JCrashPack/" #sys.argv[1]
+jcrashpack_path = sys.argv[1]
 
 default_depth = 0
 if len(sys.argv) > 2:
