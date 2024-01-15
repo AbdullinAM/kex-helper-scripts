@@ -3,7 +3,9 @@
 import os
 import json
 
-JUGE_HOME = 'JUGE/infrastructure/benchmarks_11th/'
+from paths import JUGE_PATH
+
+JUGE_HOME = os.path.join(JUGE_PATH,'infrastructure/benchmarks_11th/')
 JUGE_DOCKER_HOME = '/var/benchmarks/'
 
 def print_benchmark(benchmark, benchmark_klass):

@@ -6,11 +6,7 @@ import json
 import os
 import shutil
 
-from juge10 import BENCHMARK_CLASSES
-from juge10 import fastjson_classpath
-from juge10 import guava_classpath
-from juge10 import seata_classpath
-from juge10 import spoon_classpath
+from juge_common import *
 
 juge_path = sys.argv[1]
 
@@ -23,27 +19,21 @@ coverage_file = "coverage.json"
 if len(sys.argv) > 3:
     coverage_file = sys.argv[3]
 
-delete_coverage = False
+benchmark_version = 10
 if len(sys.argv) > 4:
-    delete_coverage = bool(sys.argv[4])
+    benchmark_version = int(sys.argv[4])
 
-start = True
-start_from = ""
-if len(sys.argv) > 5:
-    start = False
-    start_from = sys.argv[5]
+benchmarks = []
+if benchmark_version == 10:
+    benchmarks = BENCHMARK_CLASSES_10
+elif benchmark_version == 11:
+    benchmarks = BENCHMARK_CLASSES_11
+else:
+    sys.exit("Benchmark version not supported")
 
 
 def execute_benchmark(project_name: str, klass_name: str, mode_name: str, output_directory: str):
-    classpath = ""
-    if project_name == "FASTJSON":
-        classpath = fastjson_classpath(juge_path)
-    elif project_name == "GUAVA":
-        classpath = guava_classpath(juge_path)
-    elif project_name == "SEATA":
-        classpath = seata_classpath(juge_path)
-    elif project_name == "SPOON":
-        classpath = spoon_classpath(juge_path)
+    classpath = get_classpath_by_project(juge_path, project_name)
     return subprocess.run(
         [
             "python3",
@@ -58,24 +48,16 @@ def execute_benchmark(project_name: str, klass_name: str, mode_name: str, output
         stderr=subprocess.DEVNULL
     )
 
-
-if delete_coverage and os.path.exists(coverage_file):
+if os.path.exists(coverage_file):
     os.remove(coverage_file)
 
-
-for (index, benchmark) in enumerate(BENCHMARK_CLASSES):
+for (index, benchmark) in enumerate(benchmarks):
     (project, klass) = benchmark
-    if klass == start_from:
-        start = True
-
-    if not start:
-        continue
-
-    output_dir = os.path.join("temp/", project.lower())
+    output_dir = os.path.join("temp/", project.lower() + str(index))
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
     print("Executing benchmark {} of {}: class {} of project {}"
-          .format(index + 1, len(BENCHMARK_CLASSES), klass, project))
+          .format(index + 1, len(benchmarks), klass, project))
     execute_benchmark(project, klass, mode, output_dir)
 
 coverageData = json.loads(open(coverage_file).read())
@@ -84,7 +66,7 @@ lines = 0.0
 branches = 0.0
 instructions = 0.0
 
-for (project, klass) in BENCHMARK_CLASSES:
+for (project, klass) in benchmarks:
     for index in range(0, len(coverageData), 2):
         if coverageData[index]['first'] == "class {}".format(klass.replace('.', '/')) \
                 and coverageData[index]['second'] == mode:
@@ -93,6 +75,6 @@ for (project, klass) in BENCHMARK_CLASSES:
             instructions += coverageData[index + 1]['instructions']
             break
 
-print("Average line coverage: {:.2f}".format(lines / len(BENCHMARK_CLASSES)))
-print("Average branch coverage: {:.2f}".format(branches / len(BENCHMARK_CLASSES)))
-print("Average instruction coverage: {:.2f}".format(instructions / len(BENCHMARK_CLASSES)))
+print("Average line coverage: {:.2f}".format(lines / len(benchmarks)))
+print("Average branch coverage: {:.2f}".format(branches / len(benchmarks)))
+print("Average instruction coverage: {:.2f}".format(instructions / len(benchmarks)))

@@ -3,7 +3,8 @@
 import sys
 import json
 
-from juge11 import BENCHMARK_CLASSES
+from juge10 import BENCHMARK_CLASSES as BENCHMARK_CLASSES_10
+from juge11 import BENCHMARK_CLASSES as BENCHMARK_CLASSES_11
 
 coverage_file = "coverage.json"
 if len(sys.argv) > 1:
@@ -13,6 +14,14 @@ mode = "concolic"
 if len(sys.argv) > 2:
     mode = sys.argv[2]
 
+BENCHMARK_CLASSES = BENCHMARK_CLASSES_10
+if len(sys.argv) > 3:
+    version = int(sys.argv[3])
+    if version == 10:
+        BENCHMARK_CLASSES = BENCHMARK_CLASSES_10
+    else:
+        BENCHMARK_CLASSES = BENCHMARK_CLASSES_11
+
 coverageData = json.loads(open(coverage_file).read())
 
 lines = 0.0
@@ -20,6 +29,8 @@ branches = 0.0
 instructions = 0.0
 
 uncovered_classes = []
+
+
 
 for (project, klass) in BENCHMARK_CLASSES:
     found = False

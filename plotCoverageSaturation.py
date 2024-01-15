@@ -20,7 +20,7 @@ displayed_coverages = ['lines', 'branches'] # 'instructions'
 coverageData = json.loads(open(coverage_file).read())
 
 start_time = 0
-end_time = 0
+end_time = 150
 time_step = 1
 
 klass_timelines = {}
@@ -34,8 +34,8 @@ for index in range(0, len(coverageData), 2):
 	coverage_timeline = {}
 	for coverages in coverageData[index + 1]:
 		time = int(isodate.parse_duration(coverages['first']).total_seconds())
-		if time > end_time:
-			end_time = time
+		# if time > end_time:
+		# 	end_time = time
 		coverage_timeline[time] = [coverages['second'][coverage_type] for coverage_type in displayed_coverages]
 
 	klass_timelines[klass] = coverage_timeline

@@ -1,9 +1,11 @@
 #!/bin/python
 import sys
 import subprocess
-from jcrashpack import *
 import signal
 import time
+
+from jcrashpack import *
+from paths import JCRASHPACK_PATH
 
 globals = {"process" : None}
 def get_process():
@@ -28,7 +30,9 @@ def sigint_handler(signum, frame):
 
 signal.signal(signal.SIGINT, sigint_handler)
 
-jcrashpack_path = sys.argv[1]
+jcrashpack_path = JCRASHPACK_PATH
+if len(sys.argv) > 1:
+    jcrashpack_path = sys.argv[1]
 
 default_depth = 0
 if len(sys.argv) > 2:
