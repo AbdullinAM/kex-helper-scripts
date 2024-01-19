@@ -30,7 +30,7 @@ def get_classpath_by_project(juge_path: str, project_name: str):
     elif project_name == "SPATIAL4J":
         classpath = spatial4j_classpath(juge_path)
     elif project_name == "TA4J":
-        classpath = threeten_extra_classpath(juge_path)
-    elif project_name == "THREETEN-EXTRA":
         classpath = ta4j_classpath(juge_path)
+    elif project_name == "THREETEN-EXTRA":
+        classpath = threeten_extra_classpath(juge_path)
     return classpath
