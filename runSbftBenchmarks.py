@@ -28,6 +28,8 @@ if benchmark_version == 10:
     benchmarks = BENCHMARK_CLASSES_10
 elif benchmark_version == 11:
     benchmarks = BENCHMARK_CLASSES_11
+elif version == 12:
+    BENCHMARK_CLASSES = BENCHMARK_CLASSES_12
 else:
     sys.exit("Benchmark version not supported")
 

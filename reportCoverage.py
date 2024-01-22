@@ -3,8 +3,7 @@
 import sys
 import json
 
-from juge10 import BENCHMARK_CLASSES as BENCHMARK_CLASSES_10
-from juge11 import BENCHMARK_CLASSES as BENCHMARK_CLASSES_11
+from juge_common import *
 
 coverage_file = "coverage.json"
 if len(sys.argv) > 1:
@@ -19,8 +18,12 @@ if len(sys.argv) > 3:
     version = int(sys.argv[3])
     if version == 10:
         BENCHMARK_CLASSES = BENCHMARK_CLASSES_10
-    else:
+    elif version == 11:
         BENCHMARK_CLASSES = BENCHMARK_CLASSES_11
+    elif version == 12:
+        BENCHMARK_CLASSES = BENCHMARK_CLASSES_12
+    else:
+        sys.exit("Benchmark version not supported")
 
 coverageData = json.loads(open(coverage_file).read())
 

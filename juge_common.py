@@ -13,6 +13,11 @@ from juge11 import spatial4j_classpath
 from juge11 import threeten_extra_classpath
 from juge11 import ta4j_classpath
 
+from juge12 import BENCHMARK_CLASSES as BENCHMARK_CLASSES_12
+from juge12 import bytebuddy_classpath
+from juge12 import errorprone_classpath
+from juge12 import javapoet_classpath
+
 def get_classpath_by_project(juge_path: str, project_name: str):
     classpath = ""
     if project_name == "FASTJSON":
@@ -33,4 +38,12 @@ def get_classpath_by_project(juge_path: str, project_name: str):
         classpath = ta4j_classpath(juge_path)
     elif project_name == "THREETEN-EXTRA":
         classpath = threeten_extra_classpath(juge_path)
+    elif project_name == "JSOUP":
+        classpath = jsoup_classpath(juge_path)
+    elif project_name == "BYTEBUDDY":
+        classpath = bytebuddy_classpath(juge_path)
+    elif project_name == "ERRORPRONE":
+        classpath = errorprone_classpath(juge_path)
+    elif project_name == "JAVAPOET":
+        classpath = javapoet_classpath(juge_path)
     return classpath
